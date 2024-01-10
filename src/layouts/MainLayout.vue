@@ -1,5 +1,6 @@
 <template lang="pug">
 header-component
+router-view
 </template>
 
 <script lang="ts" setup>

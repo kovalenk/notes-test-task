@@ -9,7 +9,7 @@
         router-link.label-inter(to="/statistics" exact-active-class="active") Statistics
     button.btn.btn__action Create
   .profile-logo
-    img(src="src/assets/image/male.svg" alt="Item Image")
+    img(src="src/assets/image/male.svg" alt="profile_img")
 </template>
 
 <script setup lang="ts"></script>
