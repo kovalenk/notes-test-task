@@ -2,12 +2,113 @@
 @import "core/_reset";
 @import "core/_fonts";
 @import "core/_media";
+@import "core/colors";
 
 html, body, #app {
   height: 100%;
   overflow: hidden;
+  background-color: var(--background-color);
 }
 
 body.no-scroll {
   overflow: hidden;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px 16px;
+  cursor: pointer;
+
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+
+  border-radius: 8px;
+  border: none;
+
+  transition: transform 0.3s, background-color 0.3s;
+
+  @include media_mobile{
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 12px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: var(--primary-extra);
+    background-color: var(--primary-light);
+
+    &:hover {
+      color: var(--primary-extra);
+      background-color: var(--primary-light);
+    }
+  }
+
+  &__outline {
+    background-color: inherit;
+    border: solid 1px var(--primary);
+
+    color: var(--primary);
+  }
+
+  &__action {
+    color: var(--white);
+    background-color: var(--primary);
+
+    &:hover {
+      background-color: var(--primary-dark);
+    }
+
+    &:active {
+      background-color: var(--primary);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+
+    padding: 12px 14px;
+  }
+}
+
+
+.title-inter {
+  font-family: var(--font-inter);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0;
+
+  color: var(--black);
+
+  @include media_tablet {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.label-inter {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  white-space: nowrap;
+
+  color: var(--black);
 }

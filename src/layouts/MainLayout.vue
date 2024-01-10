@@ -1,8 +1,9 @@
 <template lang="pug">
-transition(name="fade", mode="out-in")
-  router-view
+header-component
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import HeaderComponent from "src/components/HeaderComponent.vue";
+</script>
 
 <style lang="scss" scoped></style>

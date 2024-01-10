@@ -1,10 +1,10 @@
 import { createApp } from "vue";
-import "./scss/styles.scss";
 import App from "./App.vue";
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import { PiniaSharedState } from "pinia-shared-state";
-import router from "./router";
+import router from "src/router";
+import "src/scss/styles.scss";
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
