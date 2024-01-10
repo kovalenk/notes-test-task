@@ -1,15 +1,13 @@
-<template lang="pug">
-.main-view
-  h2.title-inter All Notes
-  .table-data(v-if="list.length")
-  no-results(v-else)
-</template>
-
 <script lang="ts" setup>
-import NoResults from "src/components/NoResults.vue";
-import { noteStore } from "src/store/check";
-
-const { list } = noteStore();
+import NoResults from '@/components/NoResults.vue';
+import { useNoteStore } from '@/stores/check'
+const store = useNoteStore();
 </script>
 
-<style scoped lang="scss"></style>
+<template>
+  <div class="main-view">
+    <h2 class="title-inter">All Notes</h2>
+    <div class="table-data" v-if="store.isDataListExists"></div>
+    <no-results v-else></no-results>
+  </div>
+</template>

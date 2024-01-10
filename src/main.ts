@@ -1,15 +1,17 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import { createPinia } from "pinia";
-import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
-import { PiniaSharedState } from "pinia-shared-state";
-import router from "src/router";
-import "src/scss/styles.scss";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
-pinia.use(PiniaSharedState({ enable: true, initialize: true, type: "native" }));
+import App from './App.vue'
+import router from './router'
+import '@/scss/styles.scss'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(pinia).use(router).mount("#app");
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+
+app.use(pinia)
+app.use(router)
+
+app.mount('#app')

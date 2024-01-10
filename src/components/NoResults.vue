@@ -1,11 +1,15 @@
-<template lang="pug">
-.no-results
-  img(src="src/assets/image/no_data.png" alt="No results")
-  p.label-inter No notes found. Click here to create a new note
-  button.btn.btn__action Create
+<template>
+  <div class="no-results">
+    <img src="@/assets/image/no_data.png" alt="No results" />
+    <p class="label-inter">Click here to create a new note</p>
+    <button class="btn btn__action" @click="openModal(EnumModalKeys.AddNote)">Create</button>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { openModal } from '@/composables/modalActions'
+import { EnumModalKeys } from '@/constants/EnumModalKeys'
+</script>
 
 <style lang="scss" scoped>
 .no-results {

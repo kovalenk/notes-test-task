@@ -121,3 +121,13 @@ body.no-scroll {
 
   color: var(--black);
 }
+
+.icon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+
+  background-color: var(--grey-content);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}

@@ -1,22 +1,31 @@
-<template lang="pug">
-.header
-  router-link.logo_header(to="/home")
-  .nav-section
-    ul
-      li
-        router-link.label-inter(to="/home" exact-active-class="active") Home
-      li
-        router-link.label-inter(to="/statistics" exact-active-class="active") Statistics
-    button.btn.btn__action Create
-  .profile-logo
-    img(src="src/assets/image/male.svg" alt="profile_img")
+<script setup lang="ts">
+import { openModal } from '@/composables/modalActions'
+import { EnumModalKeys } from '@/constants/EnumModalKeys'
+</script>
+
+<template>
+  <div class="header">
+    <router-link class="logo_header" to="/home"></router-link>
+    <div class="nav-section">
+      <ul>
+        <li>
+          <router-link class="label-inter" to="/home" exact-active-class="active">Home</router-link>
+        </li>
+        <li>
+          <router-link class="label-inter" to="/statistics" exact-active-class="active"
+            >Statistics</router-link
+          >
+        </li>
+      </ul>
+      <button class="btn btn__action" @click="openModal(EnumModalKeys.AddNote)">Create</button>
+    </div>
+    <div class="profile-logo">
+      <img src="@/assets/image/male.svg" alt="profile_img" />
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style lang="scss" scoped>
-@import "src/scss/core/_media.scss";
-
 .header {
   display: flex;
   align-items: center;
@@ -32,8 +41,7 @@
   .logo_header {
     min-width: 40px;
     height: 40px;
-    background: transparent url("src/assets/image/logo.svg") no-repeat center /
-      40px;
+    background: transparent url('@/assets/image/logo.svg') no-repeat center / 40px;
   }
 
   .nav-section {
