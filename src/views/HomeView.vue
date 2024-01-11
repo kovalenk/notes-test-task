@@ -12,16 +12,16 @@ import { useNoteStore } from '@/stores/notes'
 import { EnumModalKeys } from '@/constants/EnumModalKeys'
 import DeleteNote from '@/modals/DeleteNote.vue'
 
-const { isDataListExists, data } = useNoteStore()
+const store = useNoteStore()
 const deleteKey = ref('')
 const page = ref(1)
 const perPage = ref(10)
 
 const dataSlice = computed(() => {
-  return data.list.slice(perPage.value * (page.value - 1), perPage.value * (page.value * 1))
+  return store.data.list.slice(perPage.value * (page.value - 1), perPage.value * (page.value * 1))
 })
 const showPagination = computed(() => {
-  return data.list.length > perPage.value
+  return store.data.list.length > perPage.value
 })
 const editItem = (id: string, props: DropDownPropsInterface) => {
   router.push(`/edit-mode/${id}`)
@@ -42,7 +42,7 @@ const updatePage = (step: number) => {
 <template>
   <div class="main-view">
     <h2 class="title-inter">All Notes</h2>
-    <template v-if="isDataListExists">
+    <template v-if="store.isDataListExists">
       <div class="table-data">
         <table class="common--table">
           <tr class="common--table-header">
@@ -79,7 +79,7 @@ const updatePage = (step: number) => {
       </div>
       <custom-pagination
         v-if="showPagination"
-        :total="data.list.length"
+        :total="store.data.list.length"
         :per-page="perPage"
         :active-page="page"
         @pageChanged="updatePage"
