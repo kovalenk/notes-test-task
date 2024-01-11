@@ -38,6 +38,9 @@ import { EnumModalKeys } from '@/constants/EnumModalKeys'
   background-color: var(--white);
   box-shadow: var(--box-shadow);
 
+  @include media_mobile {
+    padding: 0 16px;
+  }
   .logo_header {
     min-width: 40px;
     height: 40px;

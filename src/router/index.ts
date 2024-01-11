@@ -15,6 +15,11 @@ const router = createRouter({
           component: () => import(/* webpackChunkName: "HomeView" */ '@/views/HomeView.vue')
         },
         {
+          path: '/edit-mode/:id',
+          name: 'NewPassword',
+          component: () => import(/* webpackChunkName: "EditView" */ '@/views/EditView.vue')
+        },
+        {
           path: '/statistics',
           name: 'StatisticsView',
           component: () =>

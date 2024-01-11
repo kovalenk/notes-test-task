@@ -1,32 +1,22 @@
 <script lang="ts" setup>
-import { onBeforeUnmount, reactive, ref } from 'vue'
+import { onBeforeUnmount } from 'vue'
 
 import AppModal from '@/modals/AppModal.vue'
-import { required } from '@vuelidate/validators'
-import useVuelidate from '@vuelidate/core'
-import { useNoteStore } from '@/stores/check'
-import { closeModal } from '@/composables/modalActions'
-import { EnumModalKeys } from '@/constants/EnumModalKeys'
 import { checkValidation, getValidationClass } from '@/composables/validation'
+import { useForm } from '@/composables/noteForm'
+import { closeModal } from '@/composables/modalActions'
+import { useNoteStore } from '@/stores/notes'
+import { EnumModalKeys } from '@/constants/EnumModalKeys'
 
-const form = reactive({
-  text: ''
-})
-const rules = ref({
-  text: { required }
-})
-
-const store = useNoteStore()
-const $v = useVuelidate(rules, form)
+const { form, $v } = useForm()
+const { addNewItem } = useNoteStore()
 
 const close = () => {
   closeModal(EnumModalKeys.AddNote)
 }
-
 const add = () => {
   if (!checkValidation($v.value)) {
-    store.addNewItem(form.text)
-    // form.text = "";
+    addNewItem(form.text)
     close()
   }
 }
@@ -79,107 +69,10 @@ onBeforeUnmount(() => {
   gap: 16px;
   margin-bottom: 16px;
 
-  .form-radio-button {
-    display: flex;
-    gap: 12px;
-  }
-
   .title-inter {
     display: flex;
     align-items: center;
     gap: 12px;
-  }
-}
-
-.modal-body {
-  .form-group {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    @include media_mobile {
-      margin-top: 12px;
-    }
-
-    .help-message {
-      display: flex;
-      justify-content: space-between;
-
-      a {
-        font-weight: 500;
-      }
-    }
-
-    label {
-      font-family: var(--font-inter);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-      letter-spacing: 0;
-      text-align: left;
-      color: var(--grey-content);
-      margin-bottom: 8px;
-
-      @include media_mobile {
-        font-size: 12px;
-        line-height: 18px;
-      }
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 102px;
-      box-sizing: border-box;
-      border: solid 1px var(--grey-line);
-      border-radius: 8px;
-      padding: 14px 16px;
-      position: relative;
-      font-family: var(--font-inter);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0;
-
-      @include media_mobile {
-        font-size: 14px;
-        line-height: 20px;
-        height: 48px;
-      }
-
-      &::placeholder {
-        color: var(--grey-content);
-      }
-      &:focus {
-        outline: none;
-      }
-    }
-
-    span {
-      display: none;
-      font-family: var(--font-inter);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-      letter-spacing: 0;
-      color: var(--red);
-      margin-top: 8px;
-
-      @include media_mobile {
-        font-size: 12px;
-        line-height: 18px;
-      }
-    }
-
-    &.error {
-      textarea {
-        border-color: var(--red);
-      }
-
-      span {
-        display: block;
-      }
-    }
   }
 }
 

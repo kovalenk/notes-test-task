@@ -1,7 +1,7 @@
 <template>
   <div class="no-results">
     <img src="@/assets/image/no_data.png" alt="No results" />
-    <p class="label-inter">Click here to create a new note</p>
+    <p class="label-inter">No notes found. Click here to create a new note</p>
     <button class="btn btn__action" @click="openModal(EnumModalKeys.AddNote)">Create</button>
   </div>
 </template>
