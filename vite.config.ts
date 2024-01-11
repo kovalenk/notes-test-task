@@ -4,9 +4,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
+  base: '/notes-test-task/',
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -15,8 +14,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/scss/core/_colors.scss"; @import "@/scss/core/_media.scss";`,
-      },
-    },
-  },
+        additionalData: `@import "@/scss/core/_colors.scss"; @import "@/scss/core/_media.scss";`
+      }
+    }
+  }
 })

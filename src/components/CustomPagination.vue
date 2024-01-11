@@ -12,7 +12,7 @@
       v-for="(item, key) in pagesArr"
       :key="key"
       :class="{ btn__action: item === active, 'not-active': item === '...' }"
-      @click="active = item"
+      @click="active = +item"
     >
       {{ item }}
     </button>
